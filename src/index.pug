@@ -16,7 +16,7 @@ html(lang="en")
               header.header
                 .header__logo
                   a.logo(href="") ВА
-                .header__menu 
+                .header__menu
                   nav.menu
                     ul.menu__list
                       - var menuItems = ['Главная', "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
@@ -32,8 +32,8 @@ html(lang="en")
                           +icon(item, 'socials__icon')
               .hero__content
                 .user-info
-                  .user-info__title Личный сайт #[span.user-info__occ веб разработчика]
-                  .user-info__name Владимир Астаханов
+                  h1.user-info__title Личный сайт #[span.user-info__occ веб разработчика]
+                  h2.user-info__name Владимир Астаханов
               .hero__downbutton
                 .scroll-down
                   a(href="").scroll-down__btn Скролл
@@ -59,7 +59,7 @@ html(lang="en")
                 .about__right
                   .about__main-text-content
                     .about__desc Привет, меня зовут
-                    .about__title.title-section Владимир Астаханов
+                    h3.about__title.title-section Владимир Астаханов
                     .about__text-info
                       p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                   .about__ps
@@ -75,11 +75,15 @@ html(lang="en")
             .container.advantage__container
               .advantage__wrapper
                 .advantage__description
-                    .advantage__title.title-section.title-section_middle Чем я могу быть полезен вам
+                    h2.advantage__title.title-section.title-section_middle Чем я могу быть полезен вам
                     .advantage__content
                       p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
                 .advantage__widget
                   .advantage__widget-container
+                    svg
+                      linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                        stop(offset="0%" stop-color="#5500f2")
+                        stop(offset="100%" stop-color="#8f00ef")              
                     ul.skills
                       - 
                         var skills__item = [
@@ -96,26 +100,19 @@ html(lang="en")
                                   .skill
                                       svg(viewBox="0 0 100 100").skill__circle-shape
                                         circle(cx="50" cy="50" r="40").skill__circle.skill__circle_under
-                                        circle(cx="50" cy="50" r="40" ref="color-circle" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle_above
-                                        linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-                                          stop(offset="0%" stop-color="#5500f2")
-                                          stop(offset="100%" stop-color="#8f00ef")
+                                        circle(cx="50" cy="50" r="40" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle_above       
                                       .skill__circle-text #{skill}
-                  
           section.works
             .container.works__container
-              .title-section.works__section-title Мои работы
+              h2.title-section.works__section-title Мои работы
               .works__content
                 .works-slider
                   .works-slider__pics(data-slide="3")
-                  
                     .works-slider__fullpic-container
-                      +image('content/slider-1.jpg', 'works-slider__fullpic')
-
+                      +image('content/slider-1.jpg', 'works-slider__fullpic', 'Слайдер')
                     .works-slider__buttons
                       a(href="#").works-slider__btn.works-slider__btn_next
                       a(href="#").works-slider__btn.works-slider__btn_prev
-
                     ul.works-slider__thumbs
                       - var thumbs__item = ['slider-1.jpg', "slider-2.jpg", "slider-3.jpg","slider-4.jpg"];
                       each thumb in thumbs__item 
@@ -145,10 +142,10 @@ html(lang="en")
             .contacts__about
                 .reviews
                   .reviews__header
-                    .reviews__title.title-section Что обо мне говорят
+                    h2.reviews__title.title-section Что обо мне говорят
                     .reviews__buttons
-                      button(type="button" @click="slide('prev')").reviews__btn.reviews__btn_prev
-                      button(type="button" @click="slide('next')").reviews__btn.reviews__btn_next
+                      button(type="button").reviews__btn.reviews__btn_prev
+                      button(type="button").reviews__btn.reviews__btn_next
                   .reviews__content
                     ul.reviews__content-wrapper
                       - for (var i=0; i<3; i++)
@@ -166,7 +163,7 @@ html(lang="en")
                                   .user-review__occ Основатель Loftschool
             .contacts__form
               .form
-                .contacts__form-title.title-section Связаться со мной
+                h2.contacts__form-title.title-section Связаться со мной
                 form.form__elem
                   .form__row
                     - 
