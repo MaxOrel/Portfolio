@@ -1,12 +1,19 @@
-.form__row {
+.from__row {
   margin-bottom: 36px;
   display: flex;
 
-  &--extra-margin {
-    margin-bottom: 48px;
-  }
-  
   &:last-child {
     margin-bottom: 0;
   }
+}
+.form__row_extra-margin {
+  margin-bottom: 48px;
+  @include tablets{
+    margin-bottom: 28px;
+  }
+}
+.form__row_center-molile{
+  @include tablets{
+    justify-content: center;
+    }
 }

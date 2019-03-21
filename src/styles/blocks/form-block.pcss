@@ -3,6 +3,9 @@
   border-bottom: 1px solid currentColor;
   padding-bottom: 14px;
   flex: 1;
+  @include tablets {
+    font-size: 14px;
+  }
   &:last-child {
     margin-right: 0;
   }
@@ -46,6 +49,9 @@
     font-size: 18px;
     font-weight: bold;
     transition: color 0.3s;
+    @include tablets {
+      font-size: 14px;
+    }
   }
 
   &:focus {
@@ -57,6 +63,9 @@
   }
 }
 .form-block__textarea{
-        line-height: 36px;
+    line-height: 36px;
     resize: none;
+    @include tablets {
+      line-height: 20px;
+    }
 }

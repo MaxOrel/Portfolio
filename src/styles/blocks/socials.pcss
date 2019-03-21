@@ -28,6 +28,9 @@
 
 .socials__item {
   margin-right: 44px;
+  @include tablets {
+    margin-right: 40px;
+  }
   &:last-child {
     margin-right: 0px;
   }
@@ -37,4 +40,8 @@
   width: 25px;
   height: 25px;
   fill: $text-color;
+  @include tablets {
+    width: 28px;
+    height: 28px;
+  }
 }

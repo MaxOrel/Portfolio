@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  @include tablets {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 }
 
 .works-slider__pics {
@@ -9,7 +13,15 @@
   position: relative;
   z-index: 10;
   height: 549px;
-
+  @include desktop {
+    width: 58%;
+    height: 360px;
+  }
+  @include tablets {
+    margin-bottom: 100px;
+    width: 91%;
+    height: 350px;
+  }
   &:before {
     content: attr(data-slide);
     position: absolute;
@@ -20,7 +32,20 @@
     font-size: 400px;
     font-weight: 800;
     margin-left: -8%;
-    color: rgba($text-color, .05);
+    color: #f0f0f0;
+    @include desktop {
+      transform: translateY(-75%);
+      font-size: 300px;
+    }
+    @include tablets {
+    }
+  }
+  @include phones {
+    width: 100%;
+    margin-bottom: 60px;
+    &:before {
+      display: none;
+    }
   }
 }
 
@@ -43,6 +68,12 @@
   right: 0;
   bottom: 0;
   width: 178px;
+  display: flex;
+  flex-direction: column-reverse;
+
+  @include phones {
+    display: none;
+  }
 }
 
 .works-slider__thumb-item {
@@ -51,6 +82,7 @@
   &.active,
   &:hover {
     outline: 3px solid #f29400;
+    z-index: 10;
   }
 }
 
@@ -65,6 +97,11 @@
   top: 100%;
   right: 0;
   display: flex;
+
+  @include phones {
+    top: initial;
+    bottom: 0;
+  }
 }
 
 .works-slider__btn {
@@ -113,6 +150,23 @@
 .works-slider__data {
   width: 24%;
   z-index: 10;
+  @include desktop {
+    width: 32%;
+  }
+  @include tablets {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 18%;
+    text-align: center;
+  }
+
+  @include phones {
+    padding: 0 5%;
+    text-align: left;
+    align-items: flex-start;
+  }
 }
 
 .works-slider__thumb-link {
@@ -122,17 +176,21 @@
 
 .works-slider__title {
   margin-bottom: 42px;
+  @include tablets {
+    margin-bottom: 20px;
+  }
 }
 
 .works-slider__desc {
   font-weight: 600;
   color: rgba($text-color, .7);
   line-height: 1.8;
+  margin-bottom: 38px;
+  @include tablets {
+    margin-bottom: 15px;
+  }
 }
 
-.works-slider__desc {
-  margin-bottom: 38px;
-}
 
 .works-slider__link {
   display: block;

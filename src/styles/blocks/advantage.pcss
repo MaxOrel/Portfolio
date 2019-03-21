@@ -1,9 +1,18 @@
 .advantage {
   margin-bottom: 149px;
+  @include desktop {
+    margin-bottom: 115px;
+  }
+  @include phones {
+    margin-bottom: 75px;
+  }
 }
 
 .advantage__container {
   position: relative;
+  @include tablets {
+    padding-bottom: 350px;
+  }
   &:before {
     content: "";
     position: absolute;
@@ -13,6 +22,21 @@
     height: 79%;
     width: 100%;
     left: -9%;
+    max-height: 600px;
+    @include desktop {
+      left: -24%;
+    }
+    @include tablets {
+      bottom: 0;
+      left: 50%;
+      height: 300px;
+      transform: translateX(-50%);
+      background-position: center center;
+    }
+
+    @include phones {
+      width: 100%;
+    }
   }
 }
 
@@ -27,10 +51,23 @@
     width: 40%;
     margin: 0 auto;
     margin-bottom: 82px;
+    @include desktop {
+      width: 48%;
+    }
+    @include tablets {
+     font-size: 14px;
+     width: 61%;
+     text-align: center;
+     margin-bottom: 52px;
+     }
 }
 
 .advantage__title {
     margin-bottom: 52px;
+    @include tablets { 
+      line-height: 38px;
+      margin-bottom: 15px;
+     }
 }
 
 .advantage__content {
@@ -42,8 +79,16 @@
 .advantage__widget {
   display: flex;
   justify-content: flex-end;
+  padding-left: 80px;
+  @include desktop {
+    padding-left: 0;
+  }
 }
 
 .advantage__widget-container {
-  width: 58%;
+  width: 66%;
+  @include tablets { 
+    width: 100%;
+    text-align: center;
+   }
 }

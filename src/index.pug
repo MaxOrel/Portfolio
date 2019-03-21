@@ -30,6 +30,9 @@ html(lang="en")
                       li.socials__item
                         a(href="#").socials__link
                           +icon(item, 'socials__icon')
+                .hamburger-menu-link#hamburger-menu-link
+                  .hamburger-menu-link__bars
+
               .hero__content
                 .user-info
                   h1.user-info__title Личный сайт #[span.user-info__occ веб разработчика]
@@ -80,10 +83,11 @@ html(lang="en")
                       p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
                 .advantage__widget
                   .advantage__widget-container
-                    svg
-                      linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-                        stop(offset="0%" stop-color="#5500f2")
-                        stop(offset="100%" stop-color="#8f00ef")              
+                    svg(style="position:absolute;top:0; left:-9999px;")
+                      defs
+                        linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+                          stop(offset="0%" stop-color="#5500f2")
+                          stop(offset="100%" stop-color="#8f00ef")              
                     ul.skills
                       - 
                         var skills__item = [
@@ -177,7 +181,7 @@ html(lang="en")
                           +icon(`${item[0]}`, 'form-block__icon') 
                           .form-block__field
                             input(type="text" placeholder=item[2]).form-block__input
-                  .form__row.form__row--extra-margin
+                  .form__row.form__row_extra-margin
                     label.form-block(data-title="Сообщение к письму")
                       .form-block__container.form-block__container_align_top
                         +icon('message', 'form-block__icon') 
@@ -185,7 +189,7 @@ html(lang="en")
                           textarea(
                             placeholder="Требуется ваша помощь в создании сайта.\nИнтересуют сроки и цена вопроса"
                           ).form-block__input.form-block__textarea
-                  .from__row
+                  .from__row.form__row_center-molile
                     input(type="submit" value="отправить").gradient-btn.form__submit
       footer.footer
         .container.footer__container
@@ -201,7 +205,7 @@ html(lang="en")
                   li.menu__item
                     a(href="#").menu__link #{item}
             .footer__data-content
-              .footer__data-col
+              .footer__data-col.footer__data-col_social
                 .footer__data-text
                   p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
                 .footer__data-socials
@@ -210,7 +214,7 @@ html(lang="en")
                       li.socials__item
                         a(href="#").socials__link
                           +icon(item, 'socials__icon')
-              .footer__data-col
+              .footer__data-col.footer__data-col_quote
                 .text-quote
                   .text-quote__text
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете 

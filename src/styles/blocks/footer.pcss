@@ -3,11 +3,20 @@
   padding: 88px 0;
   color: rgba(#fff, .3);
   line-height: 1.7;
+  @include desktop {
+    padding: 65px 0;
+  }
+  @include tablets {
+    padding: 50px 0;
+  }
 }
 
 .footer__container {
   display: flex;
   justify-content: space-between;
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .footer__copyright {
@@ -22,6 +31,9 @@
 .footer__data {
   width: 66%;
   padding-top: 7px;
+  @include desktop {
+    width: 74%;
+  }
 }
 
 .footer__data-menu {
@@ -31,6 +43,9 @@
   }
   .menu__item {
     margin-right: 6%;
+    @include desktop {
+      margin-right: 7.5%;
+    }
   }
 }
 
@@ -41,4 +56,15 @@
 
 .footer__data-col {
   width: 48%;
+ 
+    &_social{
+      @include desktop {
+      width: 45%;
+      }
+    }
+    &_quote{
+      @include desktop {
+      width: 55%;
+      }
+    }
 }
