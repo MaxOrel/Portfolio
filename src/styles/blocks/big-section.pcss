@@ -1,9 +1,14 @@
 .fullscreen-section {
     height: 100vh;
     min-height: 650px;
+
     @include tablets {
         height: 66vh;
         min-height: initial;
+    }
+
+    @include phones {
+        height: 100vh;
     }
 }
 
@@ -11,11 +16,17 @@
     padding: 140px 0 120px;
     position: relative;
     background: #fff;
+
     @include desktop {
         padding: 125px 0 43px;
     }
+
     @include tablets {
         padding: 110px 0 0;
+    }
+
+    @include phones {
+        padding: 85px 0 0;
     }
 }
 
@@ -25,7 +36,12 @@
     background-position: top left;
     background-size: cover;
     clip-path: polygon(0% 0%, 0% 93%, 50% 100%, 100% 93%, 100% 0%);
+
     @include tablets {
         clip-path: polygon(0% 0%, 0% 96%, 50% 100%, 100% 96%, 100% 0%);
+    }
+
+    @include phones {
+        clip-path: polygon(0% 0%, 0% 98.5%, 50% 100%, 100% 98.5%, 100% 0%);
     }
 }

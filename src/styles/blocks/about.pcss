@@ -8,6 +8,9 @@
   @include tablets{
     height: 71vh;
   }
+  @include phones {
+    height: initial;
+  }
 }
 
 .about__columns {
@@ -20,8 +23,8 @@
   }
   @include phones {
     flex-direction: column;
-    padding-top: 114px;
-    padding-bottom: 114px;
+    padding-top: 44px;
+    padding-bottom: 95px;
   }
 }
 
@@ -48,18 +51,24 @@
   width: 36%;
   @include phones {
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
 }
 
 .about__desc {
   font-weight: 600;
   margin-bottom: 20px;
+  @include phones {
+    margin-bottom: 10px;
+  }
 }
 
 
 .about__title {
   margin-bottom: 23px;
+  @include phones {
+    margin-bottom: 40px;
+  }
 }
 
 .about__text-info{
@@ -69,6 +78,9 @@
   }
   @include tablets {
     line-height: 24px;
+  }
+  @include phones {
+   margin-bottom: 48px;
   }
 }
 

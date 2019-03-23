@@ -1,5 +1,5 @@
 .hero {
-  padding-top: 54px;
+  padding-top: 16px;
   position: relative;
 }
 
@@ -15,11 +15,17 @@
   align-items: center;
   justify-content: center;
   padding: 0 24%;
+
   @include desktop {
     flex: 0.85;
   }
+
   @include tablets {
     flex: 0.9;
+  }
+
+  @include phones {
+    flex: 0.8;
   }
 }
 
@@ -28,10 +34,12 @@
   margin-bottom: 6%;
   display: flex;
   justify-content: center;
+
   @include desktop {
-    margin-top:inherit;
+    margin-top: inherit;
     margin-bottom: 8%;
   }
+
   @include tablets {
     display: none;
   }

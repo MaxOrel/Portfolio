@@ -53,10 +53,17 @@ button {
   @include tablets {
     font-size: 30px;
   }
+  @include phones {
+    line-height: 36px;
+  }
 }
 
 .title-section_middle{
   font-size: 30px;
+  @include phones {
+   font-size: 24px;
+   line-height: 36px;
+  }
 }
 * {
   box-sizing: border-box;
