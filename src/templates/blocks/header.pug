@@ -1,0 +1,19 @@
+header.header
+	.header__logo
+		a.logo(href="") ВА
+	.header__menu
+		nav.menu
+			ul.menu__list
+				- var menuItems = ['Главная', "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
+				each item in menuItems 
+					li.menu__item
+						a(href="#" title=`${item}`).menu__link #{item}
+	.header__buttons
+		ul.socials
+			- var socials = ['insta', 'vk', 'github'];
+			each item in socials
+				li.socials__item
+					a(href="#").socials__link
+						+icon(item, 'socials__icon')
+	.hamburger-menu-link#hamburger-menu-link
+		.hamburger-menu-link__bars
