@@ -8,28 +8,31 @@
 }
 
 .edit-form__form-block {
-  flex: 1;
-  margin-right: 30px;
+    flex: 1;
+    margin-right: 30px;
 
-  @include tablets {
-    margin-right: 0;
-    margin-bottom: 40px;
+    @include tablets {
+        margin-right: 20px;
+        margin-bottom: 40px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
 
     &:last-child {
-      margin-bottom: 0;
+        margin-right: 0;
     }
-  }  
-
-  &:last-child {
-    margin-right: 0;
-  }
 }
+
 .edit-form__container {
     display: flex;
 
-    &_reviews{
-      padding-right: 20%;
+    &_reviews {
+        padding-right: 20%;
+        
     }
+
     @include tablets {
         flex-direction: column;
         padding: 0 16%;
@@ -37,6 +40,14 @@
 
     @include phones {
         padding: 0;
+    }
+
+
+}
+.edit-form__container_reviews + .edit-form__buttons{
+    padding-right: 20%;
+    @include tablets {
+         padding: 0;
     }
 }
 
@@ -114,6 +125,7 @@
     flex: 1;
     margin-right: 30px;
 
+
     @include tablets {
         margin-right: 0;
         margin-bottom: 50px;
@@ -134,8 +146,87 @@
             margin-bottom: 0px;
         }
     }
+
+    &_max-content:first-child,
+    &_max-content {
+        max-width: max-content;
+
+        @include tablets {
+            max-width: 100%;
+        }
+    }
 }
-.edit-form__buttons{
-  display: flex;
-  justify-content: flex-end;
+
+.edit-form__buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.edit-form__form-file-input {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+}
+
+.edit-form__form-avatar-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+.edit-form__form-addphoto {
+    color: #383bcf;
+    font-weight: 600;
+}
+
+.edit-form__form-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 27px;
+}
+
+.edit-form__form-userpic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+
+    @include phones {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+}
+
+.edit-form__form-avatar-empty {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #dee4ed;
+    position: relative;
+
+    &:before {
+        content: "";
+        height: 115px;
+        width: 85px;
+        background: svg-load("filled-user.svg", fill=#fff) center center no-repeat;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &.filled {
+        background: center center no-repeat / cover;
+
+        &:before {
+            display: none;
+        }
+    }
 }

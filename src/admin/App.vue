@@ -33,20 +33,37 @@
           .about-page__content
             .container.container--mobile-wide
               ul.skill-list
+                li.skill-list__item
+                  .add-new-skills-group
+                    .card
+                      .card__title
+                        .card__title-text
+                        .skills-card-title
+                          .skills-card-title__input
+                            label.input.no-side-paddings
+                              input(placeholder="Название новой группы").input__elem.field__elem
+                          .skills-card-title__buttons
+                            .skills-card-title__btn
+                              button(type="button").btn.is-tick.no-words
+                            .skills-card-title__btn
+                              button(type="button").btn.is-cross.no-words
+                      .card__content
+                        .add-new
+                          form.add-new-container.is-blocked
+                            .add-new__inputs
+                              .add-new__col
+                                label.input.no-side-paddings
+                                  input(placeholder="Новый навык").input__elem.field__elem
+                              .add-new__col.add-new__col_small
+                                label.input
+                                  input(type="number" min="0" max="100" maxlength="3").input__elem.field__elem
+                              button(type="submit" data-text="+").add-new__button
+                        
                 li.skill-list__item(v-for="n in 4")
                   .card
                     .card__title
                       .skills-title-container
                         .skills-card-title
-                          .input-edit
-                            .skills-card-title__input
-                              label.input.no-side-paddings
-                                input(placeholder="Название новой группы").input__elem.field__elem
-                            .skills-card-title__buttons
-                              .skills-card-title__btn
-                                button(type="button").btn.is-tick.no-words
-                              .skills-card-title__btn
-                                button(type="button").btn.is-cross.no-words
                           .skills-card-title__text Workflow
                           .skills-card-title__icon
                             button(type="button").btn.is-pencil.no-words.grayscale
@@ -54,6 +71,19 @@
                       .skill-list__table
                         .skills-table-container
                           table.skills
+                            tr.skills-row-wrapper
+                              td.skills__cell
+                                .skills__cell-input-wrapper
+                                  .label.input.no-side-paddings
+                                    input.input__elem.field__elem
+                              td.skills__cell 
+                                .skills__cell-input-wrapper
+                                  .label.input.no-side-paddings
+                                    input(type="number" min="0" max="100" maxlength="3").input__elem.field__elem
+                              td.skills__cell
+                                button(type="button").btn.is-tick.no-words
+                              td.skills__cell
+                                button(type="button").btn.is-cross.no-words
                             tr(v-for="n in 3").skills-row-wrapper
                               td.skills__cell Html 5
                               td.skills__cell 
@@ -64,7 +94,7 @@
                               td.skills__cell
                                 button(type="button").btn.is-trash.no-words.grayscale
                       .add-new
-                        .add-new-container
+                        form.add-new-container
                           .add-new__inputs
                             .add-new__col
                               label.input
@@ -145,7 +175,7 @@
                         .works__text
                           p Описание этой работы
                         a(href="#").works__link http://google.com
-                        .work__btns
+                        .works__btns
                           button(type="button" data-text="Править").btn.is-pencil
                           button(type="button" data-text="Удалить").btn.is-cross
         .reviews-section
@@ -159,12 +189,14 @@
                     .card__title-text Добавление отзыва
                   .card__content
                     .edit-form__container.edit-form__container_reviews
-                      .edit-form__col
+                      .edit-form__col.edit-form__col_max-content
                         label.edit-form__form-avatar-upload
                           input(type="file").edit-form__form-file-input
-                          .reviews__form-pic
-                            .reviews__form-avatar-empty(style="background-image: url();")
-                          .reviews__form-addphoto Добавить фото
+                          .edit-form__form-pic
+                            .edit-form__form-avatar-empty.filled(style="background-image: url(https://semantica.in/wp-content/uploads/2018/08/av-427845-1.png);")
+                          .edit-form__form-pic
+                            .edit-form__form-avatar-empty
+                          .edit-form__form-addphoto Добавить фото
                       .edit-form__col
                         .edit-form__row
                           .edit-form__form-block
@@ -180,6 +212,11 @@
                             label.input.input_labeled
                               .input__title Отзыв
                               textarea.textarea__elem.field__elem
+                    .edit-form__buttons
+                      .edit-form__buttons-item
+                        button(type="button").default-btn-container.btn-decorator.plain Отмена
+                      .edit-form__buttons-item
+                        button(type="button").default-btn-container.btn-decorator Загрузить
 
               ul.reviews
                 li.reviews__item
@@ -205,6 +242,23 @@
                           button(type="button" data-text="Править").btn.is-pencil
                           button(type="button" data-text="Удалить").btn.is-cross
 
+      .login
+        .login__content
+          form.login__form(@submit.prevent="login")
+            .login__form-title Авторизация
+            button.login__form-close
+            .login__row
+              label.input.input_labeled.input_iconed.input_icon-user
+                .input__title Логин
+                input(type="text" title="Логин").input__elem.field__elem
+                .input__error-tooltip
+                  .input__error-tooltip-container Текст ошибки
+            .login__row
+              label.input.input_labeled.input_iconed.input_icon-key
+                .input__title Логин
+                input(type="password" title="Пароль").input__elem.field__elem
+            .login__btn
+              button(type="submit").login__send-data Отправить
 
 
 </template>
@@ -229,6 +283,7 @@
 @import "../styles/admin/skills.pcss";
 @import "../styles/admin/add-new-skill.pcss";
 @import "../styles/admin/input.pcss";
+@import "../styles/admin/tooltip-error.pcss";
 
 @import "../styles/admin/works.pcss";
 @import "../styles/admin/btn-container.pcss";
@@ -237,4 +292,6 @@
 @import "../styles/admin/btn.pcss";
 @import "../styles/admin/reviews-section.pcss";
 @import "../styles/admin/user-reviews.pcss";
+
+@import "../styles/admin/login.pcss";
 </style>
