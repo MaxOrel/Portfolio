@@ -1,5 +1,5 @@
 <template lang="pug">
-   div.root-wrapper-container
+  div.root-wrapper-container
     div.root-container
       header.header-container
         .header
@@ -74,11 +74,11 @@
                             tr.skills-row-wrapper
                               td.skills__cell
                                 .skills__cell-input-wrapper
-                                  .label.input.no-side-paddings
+                                  label.input.no-side-paddings
                                     input.input__elem.field__elem
                               td.skills__cell 
                                 .skills__cell-input-wrapper
-                                  .label.input.no-side-paddings
+                                  label.input.no-side-paddings
                                     input(type="number" min="0" max="100" maxlength="3").input__elem.field__elem
                               td.skills__cell
                                 button(type="button").btn.is-tick.no-words
@@ -272,7 +272,6 @@
 @import "../styles/mixins.pcss";
 @import "../styles/admin/base-admin.pcss"; /*Общие стили для админки*/
 @import "../styles/layout/base.pcss";
-
 @import "../styles/admin/header.pcss";  
 @import "../styles/admin/tabs.pcss"; 
 @import "../styles/admin/card.pcss"; 
