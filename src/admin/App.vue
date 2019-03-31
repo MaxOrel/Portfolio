@@ -1,6 +1,32 @@
 <template lang="pug">
-   div.root-wrapper-container
+
+  div.root-wrapper-container
     div.root-container
+      .login
+        .login__content
+          form.login__form(@submit.prevent="login")
+            .login__form-title Авторизация
+            button.login__form-close
+            .login__row
+              app-input(
+                title="Логин"
+                icon="user"
+                v-model="user.name"
+                :errorText="validation.firstError('user.name')"
+              )
+            .login__row
+              app-input(
+                title="Пароль"
+                icon="key"
+                type="password"
+                v-model="user.password"
+                :errorText="validation.firstError('user.password')"
+              )
+            .login__btn
+              button(
+                type="submit"
+                :disabled="disableSubmit"
+              ).login__send-data Отправить
       header.header-container
         .header
           .container
@@ -242,29 +268,58 @@
                           button(type="button" data-text="Править").btn.is-pencil
                           button(type="button" data-text="Удалить").btn.is-cross
 
-      .login
-        .login__content
-          form.login__form(@submit.prevent="login")
-            .login__form-title Авторизация
-            button.login__form-close
-            .login__row
-              label.input.input_labeled.input_iconed.input_icon-user
-                .input__title Логин
-                input(type="text" title="Логин").input__elem.field__elem
-                .input__error-tooltip
-                  .input__error-tooltip-container Текст ошибки
-            .login__row
-              label.input.input_labeled.input_iconed.input_icon-key
-                .input__title Логин
-                input(type="password" title="Пароль").input__elem.field__elem
-            .login__btn
-              button(type="submit").login__send-data Отправить
+
 
 
 </template>
+<script>
+import { Validator } from "simple-vue-validator";
+import axios from "axios";
+import appInput from "./components/input";
 
-
-
+export default {
+  mixins: [require("simple-vue-validator").mixin],
+  validators: {
+    "user.name": value => {
+      return Validator.value(value).required("Введите имя пользователя");
+    },
+    "user.password": value => {
+      return Validator.value(value).required("Введите пароль");
+    }
+  },
+  data() {
+    return {
+      disableSubmit: false,
+      user: {
+        name: "",
+        password: ""
+      }
+    };
+  },
+  components: {
+    appInput
+  },
+  methods: {
+    async login() {
+      if ((await this.$validate()) === false) return;
+      this.disableSubmit = true;
+      try {
+        axios
+          .post("//jsonplaceholder.typicode.com/posts", {
+            name: this.user.name,
+            password: this.user.password
+          })
+          .then(response => {
+            const report = JSON.stringify(response, null, 2);
+            console.log(report);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+};
+</script>
 
 <style lang="pcss">
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
