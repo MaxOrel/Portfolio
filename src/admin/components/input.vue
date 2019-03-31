@@ -20,10 +20,7 @@ export default {
   inheritAttrs: false,
   props: {
     title: String,
-    errorText: {
-      type: String,
-      default: ""
-    },
+    errorText: String,
     icon: {
       type: String,
       default: ""

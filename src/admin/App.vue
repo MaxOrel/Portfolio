@@ -100,11 +100,11 @@
                             tr.skills-row-wrapper
                               td.skills__cell
                                 .skills__cell-input-wrapper
-                                  .label.input.no-side-paddings
+                                  label.input.no-side-paddings
                                     input.input__elem.field__elem
                               td.skills__cell 
                                 .skills__cell-input-wrapper
-                                  .label.input.no-side-paddings
+                                  label.input.no-side-paddings
                                     input(type="number" min="0" max="100" maxlength="3").input__elem.field__elem
                               td.skills__cell
                                 button(type="button").btn.is-tick.no-words
@@ -273,52 +273,52 @@
 
 </template>
 <script>
-import { Validator } from "simple-vue-validator";
-import axios from "axios";
-import appInput from "./components/input";
+  import { Validator } from "simple-vue-validator";
+  import axios from "axios";
+  import appInput from "./components/input";
 
-export default {
-  mixins: [require("simple-vue-validator").mixin],
-  validators: {
-    "user.name": value => {
-      return Validator.value(value).required("Введите имя пользователя");
+  export default {
+    mixins: [require("simple-vue-validator").mixin],
+    validators: {
+      "user.name": value => {
+        return Validator.value(value).required("Введите имя пользователя");
+      },
+      "user.password": value => {
+        return Validator.value(value).required("Введите пароль");
+      }
     },
-    "user.password": value => {
-      return Validator.value(value).required("Введите пароль");
-    }
-  },
-  data() {
-    return {
-      disableSubmit: false,
-      user: {
-        name: "",
-        password: ""
-      }
-    };
-  },
-  components: {
-    appInput
-  },
-  methods: {
-    async login() {
-      if ((await this.$validate()) === false) return;
-      this.disableSubmit = true;
-      try {
-        axios
-          .post("//jsonplaceholder.typicode.com/posts", {
-            name: this.user.name,
-            password: this.user.password
-          })
-          .then(response => {
-            const report = JSON.stringify(response, null, 2);
-            console.log(report);
-          });
-      } catch (error) {
-        console.log(error);
+    data() {
+      return {
+        disableSubmit: false,
+        user: {
+          name: "",
+          password: ""
+        }
+      };
+    },
+    components: {
+      appInput
+    },
+    methods: {
+      async login() {
+        if ((await this.$validate()) === false) return;
+        this.disableSubmit = true;
+        try {
+          axios
+            .post("//jsonplaceholder.typicode.com/posts", {
+              name: this.user.name,
+              password: this.user.password
+            })
+            .then(response => {
+              const report = JSON.stringify(response, null, 2);
+              console.log(report);
+            });
+        } catch (error) {
+          console.log(error);
+        }
       }
     }
-  }
-};
+  };
 </script>
 
 <style lang="pcss">
