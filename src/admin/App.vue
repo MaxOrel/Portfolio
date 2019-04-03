@@ -277,7 +277,10 @@
   import axios from "axios";
   import appInput from "./components/input";
 
+  axios.defaults.baseURL = 'https://webdev-api.loftschool.com';
+
   export default {
+    
     mixins: [require("simple-vue-validator").mixin],
     validators: {
       "user.name": value => {
@@ -304,14 +307,16 @@
         if ((await this.$validate()) === false) return;
         this.disableSubmit = true;
         try {
+          
           axios
-            .post("//jsonplaceholder.typicode.com/posts", {
+            .post("/login", {
               name: this.user.name,
               password: this.user.password
             })
             .then(response => {
               const report = JSON.stringify(response, null, 2);
-              console.log(report);
+               this.disableSubmit = false;
+               console.log(report);
             });
         } catch (error) {
           console.log(error);
