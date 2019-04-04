@@ -3,7 +3,11 @@
     align-items: center;
     justify-content: center;
     background: url("~images/bg/admin.jpg") center center / cover no-repeat;
-    position: relative;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
 
     &:before {
         content: "";
@@ -80,10 +84,31 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px;
-
+    outline: none;
+    position: relative;
+    z-index: 100;
+    transition: background-image 0.3s;
     &[disabled] {
         opacity: 0.5;
         filter: grayscale(100%);
+    }
+    &:before {
+        border-radius: inherit;
+        background-image: linear-gradient(160deg,#2881ef,#ad00ed);
+        content: '';    
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0; 
+        left: 0;
+        opacity: 0;
+        width: 100%;
+        z-index: -100;
+        transition: opacity .3s;
+      }
+
+    &:hover:before, &:focus:before{
+        opacity: 1;
     }
 }
 
