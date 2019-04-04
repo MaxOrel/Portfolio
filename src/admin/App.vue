@@ -6,33 +6,26 @@
         router-view
       template(v-else)
         header.header-container
-          .header
-            .container
-              .header__info
-                .user
-                  .user__pic
-                    img(src="images/content/user.jpg").user__pic-avatar
-                  .user__name 
-                    span Владимир Астаханов
-                    a.exit-btn Выйти
-                .header__title Панель администрирования
-              a.exit-btn Выйти
-          
+          app-header
+
         section.tabs-container
-          .container
-            ul.tabs
-              - 
-                var userinfo = ['Обо мне', 'Работы', 'Отзывы'];
-              each item in userinfo
-                li.tabs__item
-                  .tabs__link #{item}
+          tabs
           
         main.content-container
           router-view
 
 </template>
 <script>
-flag = true;
+  import tabs from "components/tabs";
+  import appHeader from "components/header";
+
+  
+  export default {
+    components: {
+      appHeader,
+      tabs
+    }
+};
 
 </script>
 

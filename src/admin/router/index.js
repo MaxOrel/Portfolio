@@ -2,10 +2,10 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import axios from "axios";
 
-import login from "../pages/login.vue";
-import about from "../pages/about.vue";
-import work from "../pages/work.vue";
-import reviews from "../pages/reviews.vue";
+import login from "components/pages/login.vue";
+import about from "components/pages/about.vue";
+import work from "components/pages/work.vue";
+import reviews from "components/pages/reviews.vue";
 
 Vue.use(VueRouter);
 

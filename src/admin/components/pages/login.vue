@@ -30,8 +30,9 @@
 <script>
   import { Validator } from "simple-vue-validator";
   import axios from "axios";
-  // import appInput from "components/input";
   import { setToken, setAuthHttpHeaderToAxios } from "@/helpers/token.js";
+
+  import appInput from "components/input";
 
   axios.defaults.baseURL = 'https://webdev-api.loftschool.com';
 
@@ -56,8 +57,7 @@
       };
     },
     components: {
-      // appInput
-      appInput: () => import("../components/input.vue")
+      appInput
     },
     methods: {
       async login() {
@@ -70,18 +70,26 @@
               password: this.user.password
             })
             .then(response => {
-              const report = JSON.stringify(response, null, 2);
+              // const report = JSON.stringify(response, null, 2);
+
               const token = response.data.token;
-              setToken(token);
+              
+              if (token){
+                setToken(token);
+                setAuthHttpHeaderToAxios(axios, token);
+
+                this.$router.replace("/");
+              } 
 
               this.disableSubmit = false;
               console.log(token);
             })
             .catch(error => {
+
                this.disableSubmit = false;
             });
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
       }
     }

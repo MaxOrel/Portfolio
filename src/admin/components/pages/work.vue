@@ -62,7 +62,7 @@
 						.card.card_plain
 							.works__wrapper
 								.works__pic
-									img(src="../../images/admin/dark.jpg").works__image
+									img(src="images/admin/dark.jpg").works__image
 									.works__tag
 										ul.tags
 											li.tags__item(v-for="n in 3") html

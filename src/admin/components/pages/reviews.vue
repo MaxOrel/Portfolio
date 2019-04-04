@@ -51,7 +51,7 @@
                 .card__title-text
                   .user
                     .user__avatar
-                      img(src="../../images/content/user.jpg").user__avatar-pic 
+                      img(src="images/content/user.jpg").user__avatar-pic 
                     .user__desc
                       .user__name Владимир Сабанцев
                       .user__occ Преподаватель

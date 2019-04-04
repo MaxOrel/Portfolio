@@ -11,5 +11,5 @@ export const getToken = () => {
 };
 
 export const setAuthHttpHeaderToAxios = (axiosInstance, token) => {
-    axiosInstance.defaults.headers["Authorization"] = `Bearer ${token}`;
+    axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
