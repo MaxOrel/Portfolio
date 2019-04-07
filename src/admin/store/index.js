@@ -3,10 +3,11 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+import categories from "./modules/categories";
 import skills from "./modules/skills";
 
-export const store = Vuex.Store({
+export default new Vuex.Store({
     modules:{
-        skills
+        categories, skills
     }
 })

@@ -29,15 +29,11 @@
 
 <script>
   import { Validator } from "simple-vue-validator";
-  import axios from "axios";
+  import axiosRequest from '@/requests';
   import { setToken, setAuthHttpHeaderToAxios } from "@/helpers/token.js";
-
-  import appInput from "components/input";
-
-  axios.defaults.baseURL = 'https://webdev-api.loftschool.com';
+ 
 
   export default {
-    
     mixins: [require("simple-vue-validator").mixin],
     validators: {
       "user.name": value => {
@@ -57,18 +53,14 @@
       };
     },
     components: {
-      appInput
+      appInput : () => import('components/input')
     },
     methods: {
       async login() {
         if ((await this.$validate()) === false) return;
         this.disableSubmit = true;
         try {
-          axios
-            .post("/login", {
-              name: this.user.name,
-              password: this.user.password
-            })
+          axiosRequest.post("/login", this.user)
             .then(response => {
               // const report = JSON.stringify(response, null, 2);
 
@@ -76,7 +68,7 @@
               
               if (token){
                 setToken(token);
-                setAuthHttpHeaderToAxios(axios, token);
+                setAuthHttpHeaderToAxios(axiosRequest, token);
 
                 this.$router.replace("/");
               } 
@@ -85,11 +77,10 @@
               console.log(token);
             })
             .catch(error => {
-
                this.disableSubmit = false;
             });
         } catch (error) {
-          // console.log(error);
+          
         }
       }
     }

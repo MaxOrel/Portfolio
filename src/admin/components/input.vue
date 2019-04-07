@@ -5,6 +5,7 @@
     span.input__title(v-if="title") {{title}} 
     input(
       v-bind="$attrs"
+      :value="value"
       @input="$emit('input', $event.target.value)"
     ).input__elem.field__elem
     .input__error-tooltip
@@ -24,7 +25,8 @@ export default {
     icon: {
       type: String,
       default: ""
-    }
+    },
+    value: String || Number
   },
   computed: {
     iconClass() {
