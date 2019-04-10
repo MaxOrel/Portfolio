@@ -14,22 +14,21 @@
               button(type="button").btn.is-cross.no-words
       .card__content
         .add-new
-          form.add-new-container.is-blocked
-            .add-new__inputs
-              .add-new__col
-                label.input.no-side-paddings
-                  input(placeholder="Новый навык").input__elem.field__elem
-              .add-new__col.add-new__col_small
-                label.input
-                  input(type="number" min="0" max="100" maxlength="3").input__elem.field__elem
-              button(type="submit" data-text="+").add-new__button
+          add-new-skill(
+            :blocked="addingBlocked"
+          )
+          
 </template>
 <script>
 import { mapActions } from "vuex";
 
 export default {
+  components:{
+    addNewSkill : () => import("components/skills-add-item")
+  },
   data(){
     return{
+      addingBlocked: true,
       skillTitle: ""
     }
   },
@@ -38,7 +37,7 @@ export default {
     async addSkillGroup(){
       try {
         await this.addNewSkillGroup(this.skillTitle);
-        this.skillTitle = "";
+        this.blocked = true;
       } catch (error) {
         alert(error.message)
       }

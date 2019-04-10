@@ -13,6 +13,7 @@ if (token) {
   setAuthHttpHeaderToAxios(axios, token);
 }
 
+
 axios.interceptors.response.use(
   function(response) {
     return response;

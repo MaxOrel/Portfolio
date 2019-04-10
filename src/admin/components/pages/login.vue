@@ -62,7 +62,6 @@
         try {
           axiosRequest.post("/login", this.user)
             .then(response => {
-              // const report = JSON.stringify(response, null, 2);
 
               const token = response.data.token;
               
