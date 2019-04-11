@@ -4,7 +4,7 @@
     div.root-container
       template(v-if="$route.meta.public")
         router-view
-      template(v-else)
+      template(v-else-if="userIsLogged")
         header.header-container
           app-header
 
@@ -16,15 +16,17 @@
 
 </template>
 <script>
-  import tabs from "components/tabs";
-  import appHeader from "components/header";
+  import { mapState, mapActions, mapGetters } from "vuex";
 
   
   export default {
     components: {
-      appHeader,
-      tabs
-    }
+      appHeader: () => import("components/header"),
+      tabs: () => import("components/tabs"),
+    },
+    computed: {
+    ...mapGetters("user", ["userIsLogged"])
+  },
 };
 
 </script>

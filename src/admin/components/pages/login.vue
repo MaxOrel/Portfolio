@@ -62,24 +62,19 @@
         try {
           axiosRequest.post("/login", this.user)
             .then(response => {
-
               const token = response.data.token;
-              
               if (token){
                 setToken(token);
                 setAuthHttpHeaderToAxios(axiosRequest, token);
-
                 this.$router.replace("/");
               } 
-
               this.disableSubmit = false;
-              console.log(token);
             })
             .catch(error => {
                this.disableSubmit = false;
             });
         } catch (error) {
-          
+          //error
         }
       }
     }

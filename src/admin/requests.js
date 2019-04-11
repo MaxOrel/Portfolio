@@ -18,7 +18,8 @@ axios.interceptors.response.use(
   function(response) {
     return response;
   },
-  function(error) {
+  error => {
+    
     const originalRequest = error.config;
 
     if (error.response.status === 401) {
