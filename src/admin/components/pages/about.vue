@@ -8,32 +8,47 @@
           v-if="showAddingForm === false"
         ) Добавить группу
 
-      .about-page__content
-        .container.container--mobile-wide
-          ul.skill-list
-            li.skill-list__item(v-if="showAddingForm")
-              skills-add
-
-            li.skill-list__item(
-              v-for="category in categories"
-              :key="category.id"
-              )
-              skills-group(
-                :category="category"
-                :skills="filterSkillsByCategoryId(category.id)"
-              )
+    .about-page__content
+      .container.container--mobile-wide
+        ul.skill-list
+          li.skill-list__item(v-if="showAddingForm")
+            add-new-skills-group(
+              v-model="title"
+              :errorText="validation.firstError('title')"
+              @closeAddingGroup="close"
+              @approve="addSkillGroup"
+            )
+          li.skill-list__item(
+            v-for="category in categories"
+            :key="category.id"
+            )
+            skills-group(
+              :category="category"
+              :skills="filterSkillsByCategoryId(category.id)"
+            )
 </template>
 <script>
 import { mapActions, mapState } from "vuex";
+import { Validator } from "simple-vue-validator";
 
 export default {
+  mixins: [require("simple-vue-validator").mixin],
+
+  validators: {
+    title: value => {
+      return Validator.value(value).required("Заполните название");
+    }
+  },
+
   components: {
-    skillsAdd: () => import("components/skills-add"),
+    addNewSkillsGroup: () => import("components/skills-add-group"),
     skillsGroup: () => import("components/skills-group")
   },
   data() {
     return {
-      showAddingForm: false
+      showAddingForm: false,
+      loading: false,
+      title: ""
     };
   },
   computed:{
@@ -45,10 +60,27 @@ export default {
     })
   },
   methods: {
-    ...mapActions('categories',['fetchCategories']),
+    ...mapActions('categories',['addNewSkillGroup' , 'fetchCategories']),
     ...mapActions('skills',['fetchSkills']),
+
+    close() {
+      this.showAddingForm = false;
+      this.title = "";
+    },
+
     filterSkillsByCategoryId(categoryId){
       return this.skills.filter(skill => skill.category === categoryId)
+    },
+
+    async addSkillGroup(){
+      try {
+        await this.addNewSkillGroup(this.v);
+        this.blocked = true;
+        this.title = "";
+      } catch (error) {
+        alert(error.message)
+      }
+     
     }
   },
   async created(){

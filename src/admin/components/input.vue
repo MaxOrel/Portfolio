@@ -1,6 +1,7 @@
 <template lang="pug">
   label.input(
-    :class="[iconClass, {'error' : !!errorText}]"
+    v-if="fieldType === 'input'" 
+    :class="[{'input_labeled' : !!title, 'no-side-paddings' : noSidePaddings}, iconClass, {'error' : !!errorText}]"
   )
     span.input__title(v-if="title") {{title}} 
     input(
@@ -12,11 +13,24 @@
       errors-tooltip(
         :errorText="errorText"
       )
+  label.textarea(
+    v-else-if="fieldType === 'textarea'"
+    v-bind="$attrs"
+    :class="{'error': !!errorText}"
+  )
+    .input__title(v-if="title") {{title}} 
+    textarea.textarea__elem.field__elem(
+      :value="value"
+      :class="{'error' : !!errorText}"
+      @input="$emit('input', $event.target.value)"
+    )
+    .input__error-tooltip
+      errors-tooltip(
+        :errorText="errorText"
+      )  
 </template>
 
 <script>
-import errorsTooltip from "./errors-tooltip";
-
 export default {
   inheritAttrs: false,
   props: {
@@ -25,6 +39,11 @@ export default {
     icon: {
       type: String,
       default: ""
+    },
+    noSidePaddings: Boolean,
+    fieldType: {
+      type: String,
+      default: "input"
     },
     value: String || Number
   },
@@ -35,7 +54,7 @@ export default {
     }
   },
   components: {
-    errorsTooltip
+    errorsTooltip: () => import("components/errors-tooltip.vue")
   }
 };
 </script>
