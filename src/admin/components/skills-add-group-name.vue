@@ -3,7 +3,6 @@
     .skills-card-title__input
       app-input(
         placeholder="Название новой группы"
-        :value="value"
         :errorText="errorText"
         @input="$emit('input', $event)"
         @keydown.native.enter="$emit('approve')"

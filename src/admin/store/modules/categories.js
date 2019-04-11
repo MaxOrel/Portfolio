@@ -27,6 +27,7 @@ export default {
         const response = await this.$axios.post("/categories", {
           title: groupTitle
         });
+        commit("ADD_SKILLS_CATEGORY", response.data);
         return response;
       } catch (error) {
         throw new Error(

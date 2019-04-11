@@ -4,7 +4,6 @@
       .card__title
         .card__title-text
           add-group-name(
-            :value="value"
             :errorText="errorText"
             @input="$emit('input', $event)"
             @approve="$emit('approve')"
