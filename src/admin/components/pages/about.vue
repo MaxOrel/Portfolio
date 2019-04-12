@@ -25,7 +25,7 @@
             v-for="category in categories"
             :key="category.id"
             )
-            skills-group(
+            skills-group-list(
               :category="category"
               :skills="filterSkillsByCategoryId(category.id)"
             )
@@ -45,7 +45,7 @@ export default {
 
   components: {
     addNewSkillsGroup: () => import("components/skills-add-group"),
-    skillsGroup: () => import("components/skills-group")
+    skillsGroupList: () => import("components/skills-group-list")
   },
   data() {
     return {
@@ -68,7 +68,7 @@ export default {
     ...mapMutations("skills", ["ADD_SKILLS_CATEGORY"]),
     close() {
       this.showAddingForm = false;
-      this.titleNewGroup = "";
+      this.titleNewGroup = "Test";
     },
 
     filterSkillsByCategoryId(categoryId){

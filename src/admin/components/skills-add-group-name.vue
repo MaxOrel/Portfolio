@@ -4,6 +4,7 @@
       app-input(
         placeholder="Название новой группы"
         :errorText="errorText"
+        :value="value"
         @input="$emit('input', $event)"
         @keydown.native.enter="$emit('approve')"
         autofocus

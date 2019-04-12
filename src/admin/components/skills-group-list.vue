@@ -20,60 +20,37 @@
               button(type="button" @click="removeCategory").btn.is-trash.no-words
     .card__content
       .skill-list__table
-        .skills-table-container
-          table.skills
-
-            skill-item(
-              v-for="skill in skills"
-              :key="skill.id"
-              :skill="skill"
-            )
+        skill-table(
+          :category="category"
+          :skills="skills"
+        )
       .add-new
-        form(@submit.prevent="addNewSkill").add-new-container
-          .add-new__inputs
-            .add-new__col
-              label.input
-                input(placeholder="Новый навык" v-model="skill.title").input__elem.field__elem
-            .add-new__col.add-new__col_small
-              label.input
-                input(type="number" min="0" max="100" maxlength="3" v-model="skill.percent").input__elem.field__elem
-            button(type="submit" data-text="+").add-new__button
+        add-new-skill(
+          :categoryId="category.id"
+        )
 </template>
 
 <script>
 import { mapActions } from "vuex"
 
 export default {
-  props: {
-    category: Object,
-    skills: Array
-  },
   data(){
     return {
-      skill:{
-        category: this.category.id,
-        title: "",
-        percent: ""
-      },
       editMode: false,
       editedCategory: {...this.category}
     }
   },
+  
+  props: {
+    category: Object,
+    skills: Array
+  },
   components:{
-    skillItem: () => import('components/skills-item.vue')
+    addNewSkill : () => import("components/skills-add-item"),
+    skillTable: () => import('components/skills-table-items.vue')
   },
   methods: {
-    ...mapActions('skills',['addSkill']),
     ...mapActions('categories',['saveSkillGroup', 'removeSkillsGroup']),
-    async addNewSkill(){
-      try {
-        await this.addSkill(this.skill);
-        this.skill.title="";
-        this.skill.percent="";
-      } catch (error) {
-         alert('Произошла ошибка при загрузке скилла');
-      }
-    },
     async editSkillGroup(){
       try {
         await this.saveSkillGroup({
