@@ -1,5 +1,11 @@
 .edit-form {
     margin-bottom: 30px;
+    &_reviews {
+      & .edit-form__container {
+        padding-right: 20%;
+      }
+        
+    }
 }
 
 .edit-form__row {
@@ -24,7 +30,7 @@
         margin-right: 0;
     }
 }
-
+    
 .edit-form__container {
     display: flex;
 
@@ -77,6 +83,8 @@
         }
     }
 }
+
+
 
 .edit-form__file-error {
     position: absolute;
@@ -174,8 +182,22 @@
     align-items: center;
 }
 
+.edit-form__form-avatar-upload {
+  position: relative;
 
-
+  &.error {
+    .edit-form__avatar-error {
+      display: block;
+    }
+  }
+}
+.edit-form__avatar-error {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
 
 
 .edit-form__form-addphoto {

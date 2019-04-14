@@ -68,7 +68,7 @@ export default {
     ...mapMutations("skills", ["ADD_SKILLS_CATEGORY"]),
     close() {
       this.showAddingForm = false;
-      this.titleNewGroup = "Test";
+      this.titleNewGroup = "";
     },
 
     filterSkillsByCategoryId(categoryId){

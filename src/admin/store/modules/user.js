@@ -1,3 +1,4 @@
+import { generateStdError } from "@/helpers/errorHandler";
 import { removeToken } from "@/helpers/token";
 export default {
     namespaced: true,
@@ -11,13 +12,16 @@ export default {
         CLEAR_USER: state => (state.user = {})
     },
     getters: {
-        userIsLogged: state => {
-            const userObj = state.user;
-            const userObjectIsEmpty = Object.keys(userObj).length === 0 && userObj.constructor === Object;
+      userIsLogged: state => {
+        const userObj = state.user;
+        const userObjectIsEmpty = Object.keys(userObj).length === 0 && userObj.constructor === Object;
 
-            return userObjectIsEmpty === false;
+        return userObjectIsEmpty === false;
 
-        }
+      },
+      userId: state => {
+        return state.user.id
+      }
     },
     actions: {
         async loginUser({ commit }, user) {
@@ -25,7 +29,7 @@ export default {
             const response = await this.$axios.post("/login", user);
             return response;
           } catch (error) {
-              //error
+              generateStdError(error);
           }
         },
         logout({ commit }) {
